@@ -45,6 +45,15 @@ async function createCar(
   //    VALUES ($1, $2, $3, $4)`,
   //   [model, licensePlate, year, color]
   // )
+
+  await prisma.cars.create({
+    data: {
+      model,
+      licensePlate,
+      year,
+      color,
+    },
+  })
 }
 
 async function deleteCar(id: number) {
