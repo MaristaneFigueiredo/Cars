@@ -23,11 +23,13 @@ async function createCar(
   color: string
 ) {
   const car = await carRepository.getCarWithLicensePlate(licensePlate)
-  // if (car) {
-  //   throw conflictError(`Car with license plate ${licensePlate} already registered.`)
-  // }
+  if (car) {
+    throw conflictError(
+      `Car with license plate ${licensePlate} already registered.`
+    )
+  }
 
-  // await carRepository.createCar(model, licensePlate, year, color);
+  await carRepository.createCar(model, licensePlate, year, color)
 }
 
 async function deleteCar(id: number) {
