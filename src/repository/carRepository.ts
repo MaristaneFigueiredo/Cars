@@ -15,11 +15,6 @@ async function getCar(id: number) {
 }
 
 async function getCarWithLicensePlate(licensePlate: string) {
-  // const data = await db.query(`SELECT * FROM cars WHERE "licensePlate" = $1`, [
-  //   licensePlate,
-  // ])
-  // return data.rows[0]
-
   const data = await prisma.cars.findFirst({
     where: {
       licensePlate,
@@ -45,7 +40,6 @@ async function createCar(
 }
 
 async function deleteCar(id: number) {
-  // await db.query(`DELETE FROM cars WHERE id = $1`, [id])
   await prisma.cars.delete({
     where: {
       id,
